@@ -12,7 +12,6 @@ SinglyList.prototype.add = function(value) {
     var node = new Node(value),
         currentNode = this.head;
 
-    // 1-ый случай: пустой список
     if (!currentNode) {
         this.head = node;
         this._length++;
@@ -20,7 +19,6 @@ SinglyList.prototype.add = function(value) {
         return node;
     }
 
-    // 2-ой случай: непустой список
     while (currentNode.next) {
         currentNode = currentNode.next;
     }
@@ -38,12 +36,10 @@ SinglyList.prototype.searchNodeAt = function(position) {
         count = 1,
         message = {failure: 'Failure: non-existent node in this list.'};
 
-    // 1-ый случай: неверная позиция
     if (length === 0 || position < 1 || position > length) {
         throw new Error(message.failure);
     }
 
-    // 2-ой случай: верная позиция
     while (count < position) {
         currentNode = currentNode.next;
         count++;
@@ -61,12 +57,10 @@ SinglyList.prototype.remove = function(position) {
         nodeToDelete = null,
         deletedNode = null;
 
-    // 1-ый случай: неверная позиция
     if (position < 0 || position > length) {
         throw new Error(message.failure);
     }
 
-    // 2-ой случай: первый узел удален
     if (position === 1) {
         this.head = currentNode.next;
         deletedNode = currentNode;
@@ -76,7 +70,6 @@ SinglyList.prototype.remove = function(position) {
         return deletedNode;
     }
 
-    // 3-ий случай: все другие узлы удалены
     while (count < position) {
         beforeNodeToDelete = currentNode;
         nodeToDelete = currentNode.next;
