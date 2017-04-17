@@ -100,3 +100,7 @@ function addNumbertoList(number) {
     };
     return list
 };
+
+
+list1 = addNumbertoList(12745895);
+console.log(list1.searchNodeAt(3).data)
