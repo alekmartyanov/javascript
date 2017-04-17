@@ -1,8 +1,8 @@
 function fun1(par){
-    try{console.log(parseInt( par, 2 )) }
+    try{return (parseInt( par, 2 )) }
     catch (err) {return undefined}
 };
 let abc="abc"
-fun1(abc);
+console.log(fun1(abc));
 
-fun1('1011010')
+console.log(fun1('1011010'))
