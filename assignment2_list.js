@@ -98,4 +98,5 @@ function addNumbertoList(number) {
     for(var i=0;i<=temp.length;i++){
         list.add(temp[i]);
     };
+    return list
 };
