@@ -14,6 +14,17 @@ function count(self, substr) {
   return count
 }
 
+function chunkSubstr(str, size) {
+  var numChunks = Math.ceil(str.length / size),
+      chunks = new Array(numChunks);
+
+  for(var i = 0, o = 0; i < numChunks; ++i, o += size) {
+    chunks[i] = str.substr(o, size);
+  }
+
+  return chunks;
+}
+
 self1="abcabcabc"
 substr1="abc"
 
