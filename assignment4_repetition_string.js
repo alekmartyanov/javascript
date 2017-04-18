@@ -81,3 +81,92 @@ function getFactors(integer){
   }
   return factors;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function AllTheSame(array) {
+    var first = array[0];
+    return array.every(function(element) {
+        return element === first;
+    });
+}
+
+function chunkSubstr(str, size) {
+    var numChunks = Math.ceil(str.length / size),
+        chunks = new Array(numChunks);
+
+    for(var i = 0, o = 0; i < numChunks; ++i, o += size) {
+        chunks[i] = str.substr(o, size);
+    }
+
+    return chunks;
+}
+
+function count(arr) {
+    len = arr.length
+    for(i=0; i<len; i++){
+        chunkSubstr(self1, arr[i])
+    }
+
+}
+
+function getFactors(integer){
+    var factors = [],
+        quotient = 0;
+
+    for(var i = 1; i <= integer; i++){
+        quotient = integer/i;
+
+        if(quotient === Math.floor(quotient)){
+            factors.push(i);
+        }
+    }
+    return factors;
+}
+
+/*function calculate(str1, num) {
+    var s =str1
+    var half = Math.floor(num / 2), // Ensures a whole number <= num.
+        str = '1', // 1 will be a part of every solution.
+        i, j;
+
+    // Determine our increment value for the loop and starting point.
+    num % 2 === 0 ? (i = 2, j = 1) : (i = 3, j = 2);
+
+    for (i; i <= half; i += j) {
+        num % i === 0 ? str += ',' + i : false;
+        chunkSubstr(s, num)
+    }
+
+    str += ',' + num;
+
+    // Always include the original number.
+    console.log(str);
+} */
+
+function calculate1(string) {
+    l = string.length
+    getFactors(l)
+    }
+
+self1="abcabcabc"
+
+console.log(calculate1(self1))
+
+console.log (AllTheSame(chunkSubstr(self1,3)))
