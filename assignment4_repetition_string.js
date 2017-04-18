@@ -60,3 +60,10 @@ Array.prototype.allValuesSame = function() {
 
     return true;
 }
+
+function AllTheSame(array) {
+    var first = array[0];
+    return array.every(function(element) {
+        return element === first;
+    });
+}
