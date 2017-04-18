@@ -1,3 +1,6 @@
+/**
+ * Created by stremov_as on 18.04.2017.
+ */
 function Node(data) {
     this.data = data;
     this.next = null;
@@ -96,4 +99,11 @@ function addNumbertoList(number) {
 
 
 list1 = addNumbertoList(12745895);
-console.log(list1.searchNodeAt(3).data)
+console.log(list1.searchNodeAt(8).data);
+
+console.log(list1._length)
+list1.add(3)
+console.log(list1._length);
+
+list1.remove(1)
+console.log(list1._length);
