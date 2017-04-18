@@ -54,6 +54,4 @@ class Graf {
 let graf = new Graf ([[0,1],[0,4],[0,5],[1,3],[1,4],[3,4],[3,2],[2,1]]);
 graf.dfs(graf.nodes[0]);
 
-// другой вариант графа
-//let graf = new Graf ([[0,3],[1,3],[2,3],[4,3],[5,4]]);
-// graf.dfs(graf.nodes[4]);
+
