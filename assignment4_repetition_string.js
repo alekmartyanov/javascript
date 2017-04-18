@@ -48,3 +48,15 @@ function calculate(num) {
     str += ',' + num; // Always include the original number.
     alert(str);
 }
+
+
+Array.prototype.allValuesSame = function() {
+
+    for(var i = 1; i < this.length; i++)
+    {
+        if(this[i] !== this[0])
+            return false;
+    }
+
+    return true;
+}
