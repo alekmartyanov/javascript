@@ -2,7 +2,7 @@
  * Created by stremov_as on 18.04.2017.
  */
 function Node(data) {
-    this.data = data;
+    this.data = Number(data);
     this.next = null;
 }
 
