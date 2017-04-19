@@ -1,4 +1,4 @@
-function parenthesesAreBalanced(string) {
+function bracketspairs(string) {
   var parentheses = "[]{}()",
     stack = [],
     i, character, bracePosition;
@@ -23,4 +23,4 @@ function parenthesesAreBalanced(string) {
 }
 
 str = "{[]({})}"
-console.log(parenthesesAreBalanced(str))
+console.log(bracketspairs(str))
