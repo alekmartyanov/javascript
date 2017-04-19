@@ -1,34 +1,25 @@
-/*
+str="Sed tempus ipsum quis eros tempus lacinia Cras finibus lorem ut lacinia egestas nunc nibh iaculis est convallis tincidunt mi mi sed nisl Sed porttitor aliquam elit ullamcorper tincidunt arcu euismod quis Mauris congue elit suscipit leo varius facilisis Cras et arcu sodales laoreet est vitae pharetra orci Integer eget nulla dictum aliquet justo semper molestie neque Maecenas bibendum lacus tincidunt auctor varius purus felis ullamcorper dui et laoreet ligula ex et risus Donec eget fringilla nibh Cras congue tincidunt accumsan Maecenas euismod eleifend elit ut rhoncus tortor sodales a Cras egestas finibus lorem non tempor tincidunt aera"
+
 var wordCounts = { };
 var words = str.split(/\b/);
 
-for(var i = 0; i < words.length; i++)
-    wordCounts["_" + words[i]] = (wordCounts["_" + words[i]] || 0) + 1;
-console.log(wordCounts) 
-*/
-
-function nthMostCommon(string, ammount) {
-    var wordsArray = string.split(/\s/);
-    var wordOccurrences = {}
-    for (var i = 0; i < wordsArray.length; i++) {
-        wordOccurrences['_'+wordsArray[i]] = ( wordOccurrences['_'+wordsArray[i]] || 0 ) + 1;
-    }
-    var result = Object.keys(wordOccurrences).reduce(function(acc, currentKey) {
-        /* you may want to include a binary search here */
-        for (var i = 0; i < ammount; i++) {
-            if (!acc[i]) {
-                acc[i] = { word: currentKey.slice(1, currentKey.length), occurences: wordOccurrences[currentKey] };
-                break;
-            } else if (acc[i].occurences < wordOccurrences[currentKey]) {
-                acc.splice(i, 0, { word: currentKey.slice(1, currentKey.length), occurences: wordOccurrences[currentKey] });
-                if (acc.length > ammount)
-                    acc.pop();
-                break;
-            }
-        }
-        return acc;
-    }, []);
-    return result;
+function removeWhiteSpaceFromArray(array){
+    return array.filter((item) => item != ' ');
 }
 
-console.log(nthMostCommon(str,1))
+words=removeWhiteSpaceFromArray(words)
+
+for(var i = 0; i < words.length; i++)
+    wordCounts[words[i]] = (wordCounts[words[i]] || 0) + 1;
+
+
+var sortable=[]
+for(var key in wordCounts){
+    sortable.push([key,wordCounts[key]])
+}
+sortable.sort(function(a, b) {
+    return b[1] - a[1];
+});
+
+if(sortable[0][1]==sortable[1][1]) console.log("---")
+else console.log(sortable[0][0])
