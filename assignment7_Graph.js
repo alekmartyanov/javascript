@@ -164,5 +164,46 @@ var graph2 = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
 var v= bfs (graph, 1,5)
 console.log(v)
 	
+-----------------------------------------------------------------------------------
 
+LinkedList.prototype.pop = function () {
+    if (this.last === null) {
+        return null;
+    }
+    var temp = this.last;
+    this.last = this.last.prev;
+    return temp;
+};
 
+function hasPath(graph, current, goal) {
+    var stack = [];
+    var visited = [];
+    var node;
+    stack.push(current);
+    visited[current] = true;
+    while (stack.length) {
+        node = stack.pop();
+        if (node === goal) {
+            return true;
+        }
+        for (var i = 0; i < graph[node].length; i += 1) {
+            if (graph[node][i] && !visited[i]) {
+                stack.push(i);
+                visited[i] = true;
+            }
+        }
+    }
+    return false;
+}
+
+function dfs (graph, start, goal) {
+    return hasPath(graph, start, goal);
+};
+
+var graph = [[1, 1, 0, 0, 1, 0],
+    [1, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0, 0]];
+var pathExists = dfs(graph, 1, 5); // true
