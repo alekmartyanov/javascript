@@ -48,6 +48,72 @@ var distMatrix =
 var shortestDist = dijkstra(0, 2, distMatrix); // 9
 
 
+--------------------------------------------------------------------------------------------
+
+return function (src, dest, graph) {
+    var  tempDistance = 0;
+    init(src, graph);
+    while (current.node !== dest && isFinite(current.distance)) {
+        for (var i = 0; i < graph.length; i += 1) {
+            if (current.node !== i && //if it's not the current node
+                !visited[i] && //and if we haven't visited this node
+                //and this node is sibling of the current...
+                Number.isFinite(graph[i][current.node])) {
+                tempDistance = current.distance + graph[i][current.node];
+                if (tempDistance < distance[i].distance) {
+                    distance[i].distance = tempDistance;
+                    current.distance = tempDistance;
+                    unvisited.update(current);
+                }
+            }
+        }
+        visited[current.node] = true;
+        current = unvisited.extract();
+    }
+    if (distance[dest]) {
+        return distance[dest].distance;
+    }
+    return Infinity;
+};
+
+function init(src, graph) {
+    var currentTemp;
+    current = {};
+    visited = [];
+    distance = [];
+    unvisited = new Heap(compareNodesDistance);
+    for (var i = 0; i < graph.length; i += 1) {
+        currentTemp = new Node();
+        if (src === i) {
+            currentTemp.distance = 0;
+        } else {
+            currentTemp.distance = Infinity;
+        }
+        currentTemp.node = i;
+        visited[i] = false;
+        distance[i] = currentTemp;
+        unvisited.add(currentTemp);
+    }
+    current.node = src;
+    current.distance = 0;
+}
+
+function compareNodesDistance(a, b) {
+    return b.distance - a.distance;
+}
+
+function Node(id, distance) {
+    this.node = id;
+    this.distance = distance;
+}
+
+var dijkstra = (function () {
+    var Heap = require('../../data-structures/heap.js').Heap;
+    var current;
+    var visited;
+    var distance;
+    var unvisited;
+
 
 
 
