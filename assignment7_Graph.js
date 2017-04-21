@@ -54,4 +54,115 @@ class Graf {
 let graf = new Graf ([[0,1],[0,4],[0,5],[1,3],[1,4],[3,4],[3,2],[2,1]]);
 graf.dfs(graf.nodes[0]);
 
+------------------------------------------------------------------------------------------------------
+	function bfs (graph, startNode, targetNode) {
+    var parents = [];
+    var queue = [];
+    var visited = [];
+    var current;
+    queue.push(startNode);
+    parents[startNode] = null;
+    visited[startNode] = true;
+    while (queue.length) {
+        current = queue.shift();
+        if (current === targetNode) {
+            return buildPath(parents, targetNode);
+        }
+        for (var i = 0; i < graph.length; i += 1) {
+            if (i !== current && graph[current][i] && !visited[i]) {
+                parents[i] = current;
+                visited[i] = true;
+                queue.push(i);
+            }
+        }
+    }
+    return null;
+};
+
+function buildPath(parents, targetNode) {
+    var result = [targetNode];
+    while (parents[targetNode] !== null) {
+        targetNode = parents[targetNode];
+        result.push(targetNode);
+    }
+    return result.reverse();
+}
+
+LinkedList.prototype.push = function (data) {
+    var node = new Node(data);
+    if (this.first === null) {
+        this.first = this.last = node;
+    } else {
+        var temp = this.last;
+        this.last = node;
+        node.prev = temp;
+        temp.next = node;
+    }
+};
+
+LinkedList.prototype.shift = function () {
+    if (this.first === null) {
+        return null;
+    }
+    var temp = this.first;
+    this.first = this.first.next;
+    return temp;
+};
+
+LinkedList.prototype.reverse = function () {
+    if (!this.first || !this.first.next) {
+        return;
+    }
+    var current = this.first.next;
+    var prev = this.first;
+    var temp;
+    while (current) {
+        temp = current.next;
+        current.next = prev;
+        prev.prev = current;
+        prev = current;
+        current = temp;
+    }
+    this.first.next = null;
+    this.last.prev = null;
+    temp = this.first;
+    this.first = prev;
+    this.last = temp;
+};
+
+function Node(data) {
+        /**
+     * Data of the node.
+     * @member {Object}
+     */
+    this.data = data;
+    /**
+     * Next node.
+     * @member {Node}
+     */
+    this.next = null;
+    /**
+     * Previous node.
+     * @member {Node}
+     */
+    this.prev = null;
+};
+
+function LinkedList() {
+    this.first = null;
+    this.last = null;
+};
+
+var graph = [[1, 1, 0, 0, 1, 0],
+    [1, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0, 0]];
+
+var graph2 = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
+var v= bfs (graph, 1,5)
+console.log(v)
+	
+
 
