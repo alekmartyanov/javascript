@@ -207,3 +207,38 @@ var graph = [[1, 1, 0, 0, 1, 0],
     [1, 1, 0, 1, 0, 0],
     [0, 0, 0, 1, 0, 0]];
 var pathExists = dfs(graph, 1, 5); // true
+
+
+----------------------------------------------------------------------------
+	function bfs(graph, startNode) {
+    var parents = [];
+    var queue = [];
+    var visited = [];
+    var current;
+    queue.push(startNode);
+    parents[startNode] = null;
+    visited[startNode] = true;
+    while (queue.length) {
+        current = queue.shift();
+        console.log(current)
+        /*if (current === targetNode) {
+         return buildPath(parents, targetNode);
+         }*/
+        for (var i = 0; i < graph.length; i += 1) {
+            if (i !== current && graph[current][i] && !visited[i]) {
+                parents[i] = current;
+                visited[i] = true;
+                queue.push(i);
+            }
+        }
+    }
+    return null;
+};
+
+var graph = [[1, 1, 0, 0, 1, 0],
+    [1, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0, 0]];
+var shortestPath = bfs(graph, 0); // [1, 2, 3, 5]
