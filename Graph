@@ -52,3 +52,25 @@ function dfs(graph, current) {
 }
 console.log("DFS")
 var shortestPath = dfs(graph, 0); // [1, 2, 3, 5]
+
+
+var n =9 , m = 9;
+var mas = [];
+for (var i = 0; i < m; i++){
+    mas[i] = [];
+    for (var j = 0; j < n; j++){
+        mas[i][j] = 0;
+}}
+console.log(mas);
+
+var arr =[ [0,1], [0,6], [0,8], [1,4], [1,6], [1,9], [2,4], [2,6], [3,4], [3,5],
+[3,8], [4,5], [4,9], [7,8], [7,9] ]
+
+console.log(arr);
+
+for (var i = 0; i < arr.length; i++){
+    mas[arr[i]]=1
+}
+
+
+console.log(mas);
