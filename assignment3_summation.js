@@ -104,7 +104,7 @@ function reverse_number(n)
 
 function list_to_number(list_io){
     var arr = [];
-    for (var i = 1; i<4/*list_io.searchNode(i)!==undefined*/; i++) {
+    for (var i = 1; i<4; i++) {
         t=list_io.searchNodeAt(i).data
         arr.push(t);
     }
