@@ -1,22 +1,22 @@
-function RPN( input ) {
-  var ar = input.split( /\s+/ ), st = [], token;
-  while( token = ar.shift() ) { 
+function revpolnot( input ) {
+  var arr = input.split( /\s+/ ), st = [], token;
+  while( token = arr.shift() ) { 
     if ( token == +token ) {
       st.push( token );
     } else {
       var n2 = st.pop(), n1 = st.pop();
       var re = /^[\+\-\/\*]$/;
       if( n1 != +n1 || n2 != +n2 || !re.test( token ) ) {
-        throw new Error( 'Invalid expression: ' + input );
+        throw new Error(input );
       }
       st.push( eval( n1 + token + ' ' + n2 ) );
     }
   }
   if( st.length !== 1 ) {
-    throw new Error( 'Invalid expression: ' + input );
+    throw new Error(input );
   }
   return st.pop();
 }
 
-console.log(RPN("234 345 456 + + 5 /"))
+console.log(revpolnot("234 345 456 + + 5 /"))
 
