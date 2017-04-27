@@ -37,6 +37,6 @@ function countStringRepetition(str) {
     }
 }
 
-string="abcabcabcabc"
+str="abcabcabcabc"
 
-console.log(countStringRepetition(string))
+console.log(countStringRepetition(str))
