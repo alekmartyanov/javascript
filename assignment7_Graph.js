@@ -60,6 +60,6 @@ class Graph {
 }
     }
 var arr = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
-var graph1 = new Graph(6,arr);
-graph1.bfs(0);
-graph1.dfs(0);
+var graph = new Graph(6,arr);
+graph.bfs(0);
+graph.dfs(0);
