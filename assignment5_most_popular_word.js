@@ -21,5 +21,5 @@ sortable.sort(function(a, b) {
     return b[1] - a[1];
 });
 
-if(sortable[0][1]==sortable[1][1]) console.log("---")
+if(sortable[0][1]==sortable[1][1]) console.log("---");
 else console.log(sortable[0][0])
