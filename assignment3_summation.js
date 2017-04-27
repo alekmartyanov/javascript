@@ -121,9 +121,9 @@ list2 = addNumbertoList(reverse_number(m));
 
 k=reverse_number(list_to_number(list1));
 t=reverse_number(list_to_number(list2));
-p1=k+t;
+p=k+t;
 //console.log(p1);
-list3=addNumbertoList(reverse_number(p1));
+list3=addNumbertoList(reverse_number(p));
 
 console.log(n,m);
 console.log(list_to_number(list3));
