@@ -95,12 +95,12 @@ function addNumbertoList(number) {
 };
 
 
-list1 = addNumbertoList(12745895);
-console.log(list1.searchNodeAt(8).data);
+list = addNumbertoList(12745895);
+console.log(list.searchNodeAt(8).data);
 
-console.log(list1._length)
-list1.add(3)
-console.log(list1._length);
+console.log(list._length)
+list.add(3)
+console.log(list._length);
 
-list1.remove(1)
-console.log(list1._length);
+list.remove(1)
+console.log(list._length);
