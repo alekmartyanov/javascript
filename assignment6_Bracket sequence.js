@@ -1,10 +1,10 @@
-function bracketspairs(string) {
-  var parentheses = "[]{}()",
+function brackets(string) {
+  var bracketstypes = "[]{}()",
     stack = [],
     i, character, bracePosition;
 
   for(i = 0; character = string[i]; i++) {
-    bracePosition = parentheses.indexOf(character);
+    bracePosition = bracketstypes.indexOf(character);
 
     if(bracePosition === -1) {
       continue;
@@ -23,4 +23,4 @@ function bracketspairs(string) {
 }
 
 str = "{[]({})}"
-console.log(bracketspairs(str))
+console.log(brackets(str))
